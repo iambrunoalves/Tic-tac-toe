@@ -1,0 +1,172 @@
+#include <stdio.h>
+#include <string.h>
+#include <conio.h>
+#include <dos.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <time.h>
+#include <ctype.h>
+#include <locale.h>
+#include <math.h>
+
+
+main(){
+char matriz[3][3];
+int linha,coluna,lin=0,col=0;
+int GG=9, i=0, x=0, y=0, j=0,a=0,cont=0;
+
+
+
+//imprimindo a matriz 
+	for(linha=0;linha<3;linha++){
+		printf("\n");
+		for(coluna=0;coluna<3;coluna++){
+				matriz[linha][coluna]='-';
+				printf("%3c",matriz[linha][coluna] );
+		}
+	}
+	
+	//repetir as jogadas dividindo em 2 jogadores	
+	while(i!=GG || j!=GG){
+		do{
+//limpa as variveis
+		do{
+//resetand pergunta
+		do{
+//verificando se há vencedor
+		
+		for(linha=0;linha<3;linha++){
+				if (matriz[linha][0]=='X'&& matriz[linha][1]=='X'&& matriz[linha][2]=='X'){
+					printf("\nGG player 1");
+					getch();
+					return -1;
+					
+				}
+				if (matriz[linha][0]=='O'&& matriz[linha][1]=='O'&& matriz[linha][2]=='O'){
+					printf("\nGG player 2");
+					getch();
+					return-1;
+				}
+				
+			}
+			for(coluna=0;coluna<3;coluna++){
+				if (matriz[0][coluna]=='X'&& matriz[1][coluna]=='X'&& matriz[2][coluna]=='X'){
+					printf("\nGG player 1");
+					getch();
+					return-1;
+				}
+				if (matriz[0][coluna]=='O'&& matriz[1][coluna]=='O'&& matriz[2][coluna]=='O'){
+					printf("\nGG player 2");
+					getch();
+					return-1;
+				}
+			}
+			if (matriz[0][0]=='O'&& matriz[1][1]=='O'&& matriz[2][2]=='O'){
+				printf("\nGG player 2");
+				getch();
+				return-1;
+		}
+			if (matriz[0][2]=='O'&& matriz[1][1]=='O'&& matriz[2][0]=='O'){
+				printf("\nGG player 2");
+				getch();
+				return-1;
+		}
+			if (matriz[0][0]=='X'&& matriz[1][1]=='X'&& matriz[2][2]=='X'){
+				printf("\nGG player 1");
+				getch();
+				return-1;
+		}
+			if (matriz[0][2]=='X'&& matriz[1][1]=='X'&& matriz[2][0]=='X'){
+				printf("\nGG player 1");
+				getch();
+				return-1;
+		}
+		lin=0;
+		col=0;
+//recebendo dados
+		printf("\n\ndigite aki a linha\n");
+		fflush(stdin);
+		scanf("%d",&lin);
+// limpando tela e variavel
+		if(lin!=1 && lin!=2 && lin!=3){
+			system("cls");	
+		//zerand a vairiavel e imprindo a tabela novamente
+			lin=0;
+			for(linha=0;linha<3;linha++){
+				printf("\n");
+				for(coluna=0;coluna<3;coluna++){
+					printf("%3c",matriz[linha][coluna] );
+				}
+			}
+		}
+		}
+		while(lin!=1 && lin!=2 && lin!=3);
+//resetando pergunta
+		do{
+		printf("\ndigite aki a coluna\n");
+		fflush(stdin);
+		scanf("%d",&col);
+//limpando tela e variavel
+			if(col!=1 && col!=2 && col!=3){
+				system("cls");
+		//zerand a vairiavel e imprindo a tabela novamente
+				col=0;	
+				}
+			system("cls");
+				for(linha=0;linha<3;linha++){
+					printf("\n");
+					for(coluna=0;coluna<3;coluna++){
+						printf("%3c",matriz[linha][coluna] );
+					}	
+				}
+				printf("\n\n linha %d\n",lin);
+	
+	}
+		while(col!=1 && col!=2 && col!=3);
+			
+		if(matriz[lin-1][col-1]=='X'||matriz[lin-1][col-1]=='O'){
+			system("cls");
+				for(linha=0;linha<3;linha++){
+					printf("\n");
+					for(coluna=0;coluna<3;coluna++){
+						printf("%3c",matriz[linha][coluna] );
+					}	
+				}
+		}
+			}
+		while(matriz[lin-1][col-1]=='X'||matriz[lin-1][col-1]=='O');
+			
+system("cls");
+//imprimindo a matriz com os dados
+		for(linha=0;linha<3;linha++){
+			printf("\n");
+			for(coluna=0;coluna<3;coluna++){
+				if(i==j){
+					if(linha==lin-1 && coluna==col-1){
+						matriz[linha][coluna]='X';
+					}
+				}
+				else{
+					if(linha==lin-1 && coluna==col-1){
+						matriz[linha][coluna]='O';
+					}
+				}
+				printf("%3c",matriz[linha][coluna] );		
+			}
+		}
+			
+			if(i==j){
+				i++;
+			}
+			else{
+				j++;
+			}
+			linha--;
+			coluna--;
+			lin=0;
+			col=0;
+		}
+	while(i!=GG || j!=GG);
+	}
+}
+
